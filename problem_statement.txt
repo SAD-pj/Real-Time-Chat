@@ -1,4 +1,39 @@
+Ideal
+
+
+Reality
+At present, users have encountered many problems when using existing chat platforms, which affect their communication efficiency and experience. The main problems include but are not limited to the following:
+• User interface complexity: Existing user interfaces are not intuitive enough for new users, resulting in high learning costs. In addition, some advanced features are hidden deeper and not easy to be found.
+• Security Concerns: While we have certain security measures in place to protect the privacy of our users, some users have expressed concerns about the security of their data, especially when it comes to the transfer of sensitive information.
+• Emoji Compatibility: While our app supports basic emoji features, display errors often occur when users try to use newer or more complex emoji. This limits how users can express themselves and can lead to misunderstandings.
+These problems reflect the shortcomings of the current application in terms of user experience and technical implementation, and there is an urgent need to improve the overall service quality through improvement.
+
+
 consequence
+
+
+Proposal
+In view of the main problems existing in the current chat platform, such as user interface complexity, security issues and emoji compatibility, our team proposes the following detailed solutions.
+•User Interface Simplification:
+    1,Intuitive layout design: We will use a flat design and clear ICONS to reduce the learning curve for new users. The main features will be visually displayed on the home screen,
+    while advanced features are accessed through easy-to-navigate menus.
+    2,Adaptive interface: The interface ADAPTS to the user's habits and preferences to improve ease of use.
+    For example, frequently used emojis can be automatically displayed at the top.
+    3,Interactive Tutorials: Short interactive tutorials for new users to help them quickly understand how to use the basic and advanced features of the app.
+•Enhanced Security Measures:
+    1,End-to-end encryption: We will implement end-to-end encryption technology to ensure that only the communicating parties can decrypt and read the content of the message,
+    and even the server side cannot access this data.
+    2,User education: Educate users about security best practices, such as changing passwords regularly and identifying phishing attacks, through in-app tips and educational resources.
+    3,Regular security audits: Regular security audits are conducted to identify and fix potential security vulnerabilities.
+    This includes code review and security testing using automated tools.
+•Improved Emoji Compatibility
+    1,Unified Emoji Library: Develop a unified emoji library to ensure consistent emoji display across all devices and operating systems.
+    This will involve working with device manufacturers to ensure that our emojis are compatible with their systems.
+    2,User Custom emojis: Allowing users to create and share custom emojis will increase the way users express themselves and enhance the sense of engagement in the community.
+•User Feedback System
+    1,Feedback channel: Set up an easily accessible feedback channel within the app so users can report issues and suggest improvements.
+
 
 This project should be regarded as critical software, which means a failure can disrupt business processes and operations, causing inefficiencies or halting operations altogether, affecting the timelines for other projects. The failed project can not only escalate and become a runaway system but can also go to market with fundamental flaws that could bring harm to the privacy of users. The chat application will continue to fall short of user expectations, leading to lower user engagement. Faster competitors may offer more advanced features such as emoji support with AI. Resources spent on the failed project will be wasted, resulting in inefficient allocation of time, financial resources, and manpower. The business may also incur higher customer support and maintenance costs. Additionally, project delays may cause revenue loss due to late market entry. 
 Effective project planning can help mitigate these consequences, but failure can still have a lasting impact on multiple aspects. 
+
