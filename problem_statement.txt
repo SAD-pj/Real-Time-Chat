@@ -32,6 +32,7 @@ In view of the main problems existing in the current chat platform, such as user
     2,User Custom emojis: Allowing users to create and share custom emojis will increase the way users express themselves and enhance the sense of engagement in the community.
 •User Feedback System
     1,Feedback channel: Set up an easily accessible feedback channel within the app so users can report issues and suggest improvements.
+    2,Regular updates: The app is regularly updated based on user feedback to address issues users encounter and introduce new features.
 
 
 This project should be regarded as critical software, which means a failure can disrupt business processes and operations, causing inefficiencies or halting operations altogether, affecting the timelines for other projects. The failed project can not only escalate and become a runaway system but can also go to market with fundamental flaws that could bring harm to the privacy of users. The chat application will continue to fall short of user expectations, leading to lower user engagement. Faster competitors may offer more advanced features such as emoji support with AI. Resources spent on the failed project will be wasted, resulting in inefficient allocation of time, financial resources, and manpower. The business may also incur higher customer support and maintenance costs. Additionally, project delays may cause revenue loss due to late market entry.
