@@ -1,12 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Login from '@/view/LoginView.vue';
 import Chat from '@/view/ChatView.vue';
+import Register from '@/components/ReGister.vue'
 
 const routes = [
   {
     path: '/',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: Register
   },
   {
     path: '/chat',
