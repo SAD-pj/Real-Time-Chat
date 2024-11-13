@@ -1,8 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Login from '@/view/LoginView.vue';
 import Chat from '@/view/ChatView.vue';
+import ChatWindow from '@/components/ChatWindow.vue';
+import FriendInformation from "@/components/FriendInformation.vue";
 
-const routes = [
+const routes= [
   {
     path: '/',
     name: 'Login',
@@ -11,8 +13,20 @@ const routes = [
   {
     path: '/chat',
     name: 'Chat',
-    component: Chat
-  },
+    component: Chat,
+    children: [
+      {
+        path: '',
+        name: 'ChatWindow',
+        component: ChatWindow
+      },
+      {
+        path: 'friendinformation',
+        name: 'FriendInformation',
+        component: FriendInformation
+      }
+    ]
+  }
   // 其他路由配置
 ];
 

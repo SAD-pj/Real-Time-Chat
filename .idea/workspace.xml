@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a358a0fe-b415-4168-813e-e2b5a4ed92ff" name="更改" comment="增加成员">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/realtime_chat_frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/realtime_chat_frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/realtime_chat_frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/realtime_chat_frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/realtime_chat_frontend/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/realtime_chat_frontend/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/realtime_chat_frontend/src/components/HelloWorld.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/realtime_chat_frontend/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/realtime_chat_frontend/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realtime_chat_frontend/src/components/ChatContainer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/realtime_chat_frontend/src/components/ChatContainer.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realtime_chat_frontend/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/realtime_chat_frontend/src/router/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realtime_chat_frontend/src/view/ChatView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/realtime_chat_frontend/src/view/ChatView.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +107,8 @@
       <workItem from="1730182226464" duration="116000" />
       <workItem from="1730185966110" duration="65000" />
       <workItem from="1731403103578" duration="4423000" />
-      <workItem from="1731408090783" duration="1262000" />
+      <workItem from="1731408090783" duration="12552000" />
+      <workItem from="1731479453624" duration="12098000" />
     </task>
     <task id="LOCAL-00001" summary="Update problem_statement.txt">
       <option name="closed" value="true" />

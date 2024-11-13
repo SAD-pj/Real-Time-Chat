@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <Header />
-    <router-view></router-view>
+    <div class="ViewContainer">
+      <router-view></router-view>
+    </div>
+
   </div>
 </template>
 
@@ -18,5 +21,21 @@ export default {
 </script>
 
 <style>
-
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.ViewContainer {
+  flex: 1;
+  overflow-y: auto;
+  background-color: #f0f2f5; /* 你可以根据需要调整背景颜色 */
+  padding: 20px; /* 你可以根据需要调整内边距 */
+}
 </style>
