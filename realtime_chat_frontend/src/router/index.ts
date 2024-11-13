@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Login from '@/view/LoginView.vue';
 import Chat from '@/view/ChatView.vue';
-import Register from '@/components/ReGister.vue'
+import Register from '@/components/RegisterPage.vue'
 import ChatWindow from '@/components/ChatWindow.vue';
 import FriendInformation from "@/components/FriendInformation.vue";
 
