@@ -3,18 +3,24 @@
     <h1 class="bounce">快来 Chat</h1>
     <form @submit.prevent="handleSubmit">
       <div class="input-group">
-        <el-icon class="icon"><User /></el-icon>
-        <input type="email" placeholder="请输入电子邮箱" v-model="email" :class="{ error: emailError }" @input="clearError('email')" required />
+        <div class="input-with-icon">
+          <el-icon class="icon"><User /></el-icon>
+          <input type="email" placeholder="请输入电子邮箱" v-model="email" :class="{ error: emailError }" @input="clearError('email')" required />
+        </div>
         <p v-if="emailError" class="error-message">{{ emailError }}</p>
       </div>
       <div class="input-group">
-        <el-icon class="icon"><Lock /></el-icon>
-        <input type="password" placeholder="请输入密码" v-model="password" :class="{ error: passwordError }" @input="clearError('password')" required />
+        <div class="input-with-icon">
+          <el-icon class="icon"><Lock /></el-icon>
+          <input type="password" placeholder="请输入密码" v-model="password" :class="{ error: passwordError }" @input="clearError('password')" required />
+        </div>
         <p v-if="passwordError" class="error-message">{{ passwordError }}</p>
       </div>
       <div class="input-group">
-        <el-icon class="icon"><Unlock /></el-icon>
-        <input type="password" placeholder="请再次输入密码" v-model="confirmPassword" :class="{ error: confirmPasswordError }" @input="clearError('confirmPassword')" required />
+        <div class="input-with-icon">
+          <el-icon class="icon"><Unlock /></el-icon>
+          <input type="password" placeholder="请再次输入密码" v-model="confirmPassword" :class="{ error: confirmPasswordError }" @input="clearError('confirmPassword')" required />
+        </div>
         <p v-if="passwordMismatch" class="error-message">两次输入的密码不一致</p>
       </div>
       <div class="buttons">
@@ -140,38 +146,38 @@ export default {
 }
 
 .input-group {
-  position: relative;
   margin-bottom: 20px;
 }
 
-
-.icon {
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #999;
-  font-size: 18px;
-  line-height: 1em; /* 确保垂直居中 */
-}
-
-.input-group input {
-  width: calc(100% - 40px); /* 减去左侧图标的宽度 */
-  height: 40px;
-  padding-left: 40px;
+.input-with-icon {
+  display: flex;
+  align-items: center;
   border: 1px solid #ddd;
   border-radius: 5px;
+  padding: 5px;
+  width: 100%;
+}
+
+.icon {
+  color: #999;
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.input-with-icon input {
+  width: 100%;
+  height: 40px;
+  border: none;
   outline: none;
   font-size: 16px;
+  padding: 0;
+  box-sizing: border-box; /* 确保内边距不会影响宽度 */
 }
 
-.input-group input + p.error-message {
-  display: block; /* 显示错误消息 */
-}
-
-.input-group input + p.error-message ~ .icon {
-  position: relative; /* 相对于输入框进行定位 */
-  top: calc(50% - 20px); /* 调整顶部偏移量以适应输入框的变化 */
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
 }
 
 .buttons {
@@ -232,11 +238,4 @@ export default {
 .error {
   border-color: red;
 }
-
-.error-message {
-  color: red;
-  font-size: 14px;
-  margin-top: 5px;
-}
-
 </style>

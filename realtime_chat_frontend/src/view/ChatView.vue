@@ -101,6 +101,7 @@ const handleSelect = (index) => {
   background-color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+  border: 1px solid #ccc; /* 添加边框 */
   overflow: hidden;
   transition: box-shadow 0.3s ease; /* 添加过渡效果 */
 }
