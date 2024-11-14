@@ -30,12 +30,11 @@
     </form>
   </div>
 </template>
-<!--111-->
-
 
 <script>
 import { ref } from 'vue';
-import { ElIcon, User, Lock,Unlock} from 'element-plus';
+import { ElIcon, User, Lock, Unlock } from 'element-plus';
+import axios from 'axios'; // 导入 Axios
 
 export default {
   components: {
@@ -72,7 +71,7 @@ export default {
       return true;
     };
 
-    const validateConfirmPassword = (password, confirmPassword) => {
+    const validateConfirmPassword = (confirmPassword) => {
       if (confirmPassword === '') {
         confirmPasswordError.value = '确认密码不能为空';
         return false;
@@ -88,14 +87,12 @@ export default {
       passwordMismatch.value = false;
     };
 
-    const handleSubmit = (event) => {
-      event.preventDefault();
-
+    const handleSubmit = async () => {
       let isValid = true;
 
       if (!validateEmail(email.value)) isValid = false;
       if (!validatePassword(password.value)) isValid = false;
-      if (!validateConfirmPassword(password.value, confirmPassword.value)) isValid = false;
+      if (!validateConfirmPassword(confirmPassword.value)) isValid = false;
 
       if (password.value !== confirmPassword.value) {
         passwordMismatch.value = true;
@@ -103,14 +100,26 @@ export default {
       }
 
       if (isValid) {
-        // 处理提交逻辑
-        console.log('Email:', email.value);
-        console.log('Password:', password.value);
-      }
-    };
+        try {
+          const response = await axios.post('/api/register', {
+            email: email.value,
+            password: password.value
+          });
 
-    const handleLogin = () => {
-      handleSubmit(); // 使用相同的验证逻辑
+          if (response.data.success) {
+            // 注册成功，跳转到登录页面
+            alert('注册成功，请登录');
+            // 可以在这里添加跳转逻辑，例如：router.push('/login');
+          } else {
+            // 注册失败，显示错误信息
+            alert(response.data.message || '注册失败，请检查您的信息');
+          }
+        } catch (error) {
+          // 处理请求错误
+          console.error('注册请求失败:', error);
+          alert('网络请求出错，请稍后再试');
+        }
+      }
     };
 
     return {
@@ -122,7 +131,6 @@ export default {
       confirmPasswordError,
       passwordMismatch,
       handleSubmit,
-      handleLogin,
       clearError
     };
   }
@@ -172,12 +180,6 @@ export default {
   font-size: 16px;
   padding: 0;
   box-sizing: border-box; /* 确保内边距不会影响宽度 */
-}
-
-.error-message {
-  color: red;
-  font-size: 14px;
-  margin-top: 5px;
 }
 
 .buttons {
@@ -237,5 +239,11 @@ export default {
 
 .error {
   border-color: red;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
 }
 </style>
