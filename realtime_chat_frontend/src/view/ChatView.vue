@@ -5,7 +5,8 @@
         <el-aside width="33.33%" style="background-color: #d3dce6; display: flex; flex-direction: column;">
           <div class="sidebar-section" style="display: flex; flex-direction: column; height: 100%;">
             <div class="profile-section" style="flex: 1; display: flex; align-items: center; justify-content: center;">
-              <el-avatar :icon="UserFilled" />
+              <el-avatar :src="userProfile.avatar" />
+              <p class="email">{{ userProfile.email }}</p>
             </div>
             <div class="menu-section" style="flex: 7; display: flex; flex-direction: row; height: 100%;">
               <el-menu
@@ -31,13 +32,9 @@
                   class="user-list"
                   style="width: 100%;"
                 >
-                  <el-menu-item index="1" class="user-menu-item">
-                    <el-avatar shape="square" :size="50" :src="squareUrl" style="margin-right: 10px;" />
-                    <span>用户1</span>
-                  </el-menu-item>
-                  <el-menu-item index="2" class="user-menu-item">
-                    <el-avatar shape="square" :size="50" :src="squareUrl" style="margin-right: 10px;" />
-                    <span>用户2</span>
+                  <el-menu-item v-for="friend in friendsList" :key="friend.id" :index="friend.id.toString()" class="user-menu-item">
+                    <el-avatar shape="square" :size="50" :src="friend.avatar" style="margin-right: 10px;" />
+                    <span>{{ friend.name }}</span>
                   </el-menu-item>
                 </el-menu>
               </div>
@@ -53,15 +50,22 @@
 <script setup>
 import { useRouter } from 'vue-router';
 import { ChatDotRound, UserFilled } from '@element-plus/icons-vue';
-import { reactive, toRefs } from 'vue';
+import { reactive, toRefs, onMounted } from 'vue';
 
 const router = useRouter();
 
 const state = reactive({
-  squareUrl: 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png',
+  userProfile: {
+    avatar: 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png',
+    email: 'user@example.com'
+  },
+  friendsList: [
+    { id: 1, avatar: 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png', name: '用户1' },
+    { id: 2, avatar: 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png', name: '用户2' }
+  ]
 });
 
-const { squareUrl } = toRefs(state);
+const { userProfile, friendsList } = toRefs(state);
 
 const goToChat = () => {
   router.push({ name: 'ChatWindow' });
@@ -83,6 +87,22 @@ const handleSelect = (index) => {
       break;
   }
 };
+
+// 模拟用户数据加载
+onMounted(() => {
+  // 这里可以替换为从后端 API 获取用户数据
+  const simulatedUser = {
+    avatar: 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png',
+    email: 'user@example.com'
+  };
+  const simulatedFriends = [
+    { id: 1, avatar: 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png', name: '用户1' },
+    { id: 2, avatar: 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png', name: '用户2' }
+  ];
+
+  state.userProfile = simulatedUser;
+  state.friendsList = simulatedFriends;
+});
 </script>
 
 <style scoped>
@@ -120,8 +140,16 @@ const handleSelect = (index) => {
 .profile-section {
   flex: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-top: 20px; /* 增加顶部内边距 */
+}
+
+.email {
+  margin-top: 10px; /* 增加邮箱与头像之间的间距 */
+  font-size: 16px;
+  color: #333;
 }
 
 .menu-section {

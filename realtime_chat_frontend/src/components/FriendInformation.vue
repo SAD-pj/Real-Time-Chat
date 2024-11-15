@@ -5,8 +5,8 @@
 
     <!-- 用户信息 -->
     <div class="user-info">
-      <p>Email: {{ email }}</p>
-      <p>Account: {{ account }}</p>
+      <p>Email: {{ userProfile.email }}</p>
+      <p>Account: {{ userProfile.account }}</p>
 
       <!-- 自定义按钮 -->
       <el-button type="primary" round @click="sendMessage" class="send-message-btn">发消息</el-button>
@@ -15,11 +15,17 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { reactive, toRefs } from 'vue';
 import { UserFilled } from '@element-plus/icons-vue';
 
-const email = ref('456@lingshulian.com');
-const account = ref('cacb9f21656613953063');
+const state = reactive({
+  userProfile: {
+    email: '456@lingshulian.com',
+    account: 'cacb9f21656613953063'
+  }
+});
+
+const { userProfile } = toRefs(state);
 
 function sendMessage() {
   console.log('点击了发送消息按钮');
