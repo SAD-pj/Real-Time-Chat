@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a358a0fe-b415-4168-813e-e2b5a4ed92ff" name="更改" comment="增加成员">
     <list default="true" id="a358a0fe-b415-4168-813e-e2b5a4ed92ff" name="更改" comment="">
+    <list default="true" id="a358a0fe-b415-4168-813e-e2b5a4ed92ff" name="更改" comment="登录注册界面">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/realtime_chat_frontend/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/realtime_chat_frontend/src/App.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/realtime_chat_frontend/src/components/ChatContainer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/realtime_chat_frontend/src/components/ChatContainer.vue" afterDir="false" />
@@ -150,6 +151,7 @@
       <workItem from="1731480498637" duration="9966000" />
       <workItem from="1731408090783" duration="12552000" />
       <workItem from="1731479453624" duration="12098000" />
+      <workItem from="1731480498637" duration="11013000" />
     </task>
     <task id="LOCAL-00001" summary="Update problem_statement.txt">
       <option name="closed" value="true" />
@@ -207,7 +209,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728822504676</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="登录注册界面">
+      <option name="closed" value="true" />
+      <created>1731491993106</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1731491993106</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -240,6 +250,7 @@
     <MESSAGE value="Update problem_statement.txt" />
     <MESSAGE value="Update problem_statement.txt&#10;提交proposal" />
     <MESSAGE value="增加成员" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加成员" />
+    <MESSAGE value="登录注册界面" />
+    <option name="LAST_COMMIT_MESSAGE" value="登录注册界面" />
   </component>
 </project>
