@@ -10,9 +10,7 @@ const jwtConfig = {
 };
 const joi = require('joi')
 
-// 格式化响应
 const format_respond = (req, res, next) => {
-  // code 默认值为 400，表示失败的情况
   res.format_respond = function (err, code = 400, data) {
     const datas = {
       code,
