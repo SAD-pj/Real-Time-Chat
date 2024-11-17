@@ -1,3 +1,4 @@
+# do not run this script if the database already exists
 import sqlite3
 conn = sqlite3.connect('user.db')
 cursor = conn.cursor()

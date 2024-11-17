@@ -1,8 +1,10 @@
+# do not run this script
+
 import sqlite3
 conn = sqlite3.connect('realtime_chat_backend/db/user.db')
 cursor = conn.cursor()
 
-#cursor.execute("INSERT INTO user (name, nick_name, password, mobile, online_status, avatar, email, session_history, chat_id, user_timestamp, emoji) VALUES"+ 
+#cursor.execute("INSERT INTO user (name, nick_name, password, mobile, online_status, avatar, email, session_history, chat_id, user_timestamp, emoji) VALUES"+
                #"('admin', 'admin', 'admin', '1234', 1, 'admin',' '")
 #cursor.execute("select * from user")
 #print(cursor.fetchall())

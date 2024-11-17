@@ -1,3 +1,5 @@
+# do not run this script
+
 import sqlite3
 conn = sqlite3.connect('realtime_chat_backend/db/user.db')
 cursor = conn.cursor()
