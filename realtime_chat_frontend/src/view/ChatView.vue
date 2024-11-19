@@ -28,11 +28,17 @@
               </el-menu>
               <div class="menu-right" style="width: 70%; background-color: white; display: flex; flex-direction: column; justify-content: flex-start; border-right: 1px solid #e6e6e6;">
                 <el-menu
-                  default-active="1"
+                  :default-active="userStore.currentFriend?.id.toString()"
                   class="user-list"
                   style="width: 100%;"
+                  @select="handleFriendSelect"
                 >
-                  <el-menu-item v-for="friend in friendsList" :key="friend.id" :index="friend.id.toString()" class="user-menu-item">
+                  <el-menu-item
+                    v-for="friend in friendsList"
+                    :key="friend.id"
+                    :index="friend.id.toString()"
+                    class="user-menu-item"
+                  >
                     <el-avatar shape="square" :size="50" :src="friend.avatar" style="margin-right: 10px;" />
                     <span>{{ friend.name }}</span>
                   </el-menu-item>
@@ -50,22 +56,18 @@
 <script setup>
 import { useRouter } from 'vue-router';
 import { ChatDotRound, UserFilled } from '@element-plus/icons-vue';
-import { reactive, toRefs, onMounted } from 'vue';
+import { onMounted } from 'vue';
+import { useUserStore } from '@/stores/user';
+import { storeToRefs } from 'pinia';
 
 const router = useRouter();
+const userStore = useUserStore();
+const { userProfile, friendsList } = storeToRefs(userStore);
 
-const state = reactive({
-  userProfile: {
-    avatar: 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png',
-    email: 'user@example.com'
-  },
-  friendsList: [
-    { id: 1, avatar: 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png', name: '用户1' },
-    { id: 2, avatar: 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png', name: '用户2' }
-  ]
-});
-
-const { userProfile, friendsList } = toRefs(state);
+// 添加好友选择处理函数
+const handleFriendSelect = (friendId) => {
+  userStore.setCurrentFriend(Number(friendId));
+};
 
 const goToChat = () => {
   router.push({ name: 'ChatWindow' });
@@ -100,8 +102,8 @@ onMounted(() => {
     { id: 2, avatar: 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png', name: '用户2' }
   ];
 
-  state.userProfile = simulatedUser;
-  state.friendsList = simulatedFriends;
+  userStore.updateUserProfile(simulatedUser);
+  userStore.updateFriendsList(simulatedFriends);
 });
 </script>
 

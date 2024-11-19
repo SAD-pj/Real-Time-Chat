@@ -1,35 +1,50 @@
 <template>
   <div class="friend-information">
-    <!-- 头像 -->
-    <el-avatar :size="100" :icon="UserFilled" class="avatar-up" />
+    <div v-if="userStore.currentFriend">
+      <!-- 头像 -->
+      <el-avatar
+        :size="100"
+        :src="userStore.currentFriend.avatar"
+        :icon="UserFilled"
+        class="avatar-up"
+      />
 
-    <!-- 用户信息 -->
-    <div class="user-info">
-      <p>Email: {{ userProfile.email }}</p>
-      <p>Account: {{ userProfile.account }}</p>
+      <!-- 用户信息 -->
+      <div class="user-info">
+        <p>用户名: {{ userStore.currentFriend.name }}</p>
+        <p>ID: {{ userStore.currentFriend.id }}</p>
 
-      <!-- 自定义按钮 -->
-      <el-button type="primary" round @click="sendMessage" class="send-message-btn">发消息</el-button>
+        <!-- 自定义按钮 -->
+        <el-button
+          type="primary"
+          round
+          @click="handleSendMessage"
+          class="send-message-btn"
+        >
+          发消息
+        </el-button>
+      </div>
+    </div>
+    <div v-else class="no-friend-selected">
+      <el-empty description="请选择一个好友查看详细信息" />
     </div>
   </div>
 </template>
 
 <script setup>
-import { reactive, toRefs } from 'vue';
 import { UserFilled } from '@element-plus/icons-vue';
+import { useUserStore } from '@/stores/user';
+import { useRouter } from 'vue-router';
 
-const state = reactive({
-  userProfile: {
-    email: '456@lingshulian.com',
-    account: 'cacb9f21656613953063'
+const userStore = useUserStore();
+const router = useRouter();
+
+const handleSendMessage = () => {
+  if (userStore.currentFriend) {
+    // 跳转到聊天窗口
+    router.push({ name: 'ChatWindow' });
   }
-});
-
-const { userProfile } = toRefs(state);
-
-function sendMessage() {
-  console.log('点击了发送消息按钮');
-}
+};
 </script>
 
 <style scoped>
@@ -38,7 +53,7 @@ function sendMessage() {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh; /* 使容器高度占满整个视口 */
+  height: 100%;  /* 改为 100% 而不是 100vh */
   padding: 20px;
   background-color: white;
 }
@@ -49,10 +64,18 @@ function sendMessage() {
 }
 
 .avatar-up {
-  transform: translateY(-10px); /* 调整此值以改变头像的垂直位置 */
+  transform: translateY(-10px);
 }
 
 .send-message-btn {
-  width: 200px; /* 设置固定宽度 */
+  width: 200px;
+  margin-top: 20px;
+}
+
+.no-friend-selected {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 </style>
