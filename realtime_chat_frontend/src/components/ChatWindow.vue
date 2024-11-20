@@ -205,30 +205,4 @@ const scrollToBottom = () => {
   padding: 10px 0;
 }
 
-.editor-bottom {
-  display: flex;
-  justify-content: flex-end;
-  padding: 10px 0;
-}
-
-.no-chat {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* 滚动条样式 */
-.chat-content::-webkit-scrollbar {
-  width: 6px;
-}
-
-.chat-content::-webkit-scrollbar-thumb {
-  background-color: #ddd;
-  border-radius: 3px;
-}
-
-.chat-content::-webkit-scrollbar-track {
-  background-color: transparent;
-}
 </style>
