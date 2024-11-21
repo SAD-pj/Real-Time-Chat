@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header />
+<!--    <Header />-->
     <div class="ViewContainer">
       <router-view></router-view>
     </div>
@@ -10,12 +10,12 @@
 
 <script>
 
-import Header from "@/components/HeaderMenu.vue";
+// import Header from "@/components/HeaderMenu.vue";
 
 export default {
   name: 'App',
   components: {
-    Header
+    // Header
   }
 }
 </script>
@@ -36,6 +36,5 @@ export default {
   flex: 1;
   overflow-y: auto;
   background-color: #f0f2f5; /* 你可以根据需要调整背景颜色 */
-  padding: 20px; /* 你可以根据需要调整内边距 */
 }
 </style>
