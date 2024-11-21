@@ -35,6 +35,19 @@
 |is_read| INTEGER NOT NULL, |
 |avatar |TEXT DEFAULT NULL|
 
++ group
+
+| col | 类型 |
+| --- | --- |
+|group_id| INTEGER PRIMARY KEY AUTOINCREMENT,|
+|group_name |TEXT NOT NULL,|
+|host_id INTEGER |NOT NULL,|
+|member_list| TEXT NOT NULL,|
+|time| TEXT NOT NULL,|
+|history |TEXT DEFAULT NULL,|
+|description| TEXT DEFAULT NULL,|
+|avatar |TEXT DEFAULT NULL|
+
 ### middleware
 + cors：处理跨域请求
 + express-jwt：进行 JWT 认证    

@@ -33,8 +33,22 @@ CREATE TABLE chat (
   avatar TEXT DEFAULT NULL
 );
 """
-cursor.execute(sql_statements)
-cursor.execute(sql_statement2)
+sql_statement3 = """
+CREATE TABLE groupt (
+  group_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  group_name TEXT NOT NULL,
+  host_id INTEGER NOT NULL,
+  member_list TEXT NOT NULL,
+  time TEXT NOT NULL,
+  history TEXT DEFAULT NULL,
+  description TEXT DEFAULT NULL,
+  avatar TEXT DEFAULT NULL
+);
+"""
+
+#cursor.execute(sql_statements)
+#cursor.execute(sql_statement2)
+cursor.execute(sql_statement3)
 
 conn.commit()
 conn.close()
