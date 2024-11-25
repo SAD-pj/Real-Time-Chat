@@ -34,13 +34,13 @@
                   @select="handleFriendSelect"
                 >
                   <el-menu-item
-                    v-for="friend in friendsList"
-                    :key="friend.id"
-                    :index="friend.id.toString()"
+                    v-for="user in usersList"
+                    :key="user.id"
+                    :index="user.id.toString()"
                     class="user-menu-item"
                   >
-                    <el-avatar shape="square" :size="50" :src="friend.avatar" style="margin-right: 10px;" />
-                    <span>{{ friend.name }}</span>
+                    <el-avatar shape="square" :size="50" :src="user.avatar" style="margin-right: 10px;" />
+                    <span>{{ user.name }}</span>
                   </el-menu-item>
                 </el-menu>
               </div>
@@ -62,11 +62,11 @@ import { storeToRefs } from 'pinia';
 
 const router = useRouter();
 const userStore = useUserStore();
-const { userProfile, friendsList } = storeToRefs(userStore);
+const { userProfile, usersList } = storeToRefs(userStore);
 
 // 添加好友选择处理函数
-const handleFriendSelect = (friendId) => {
-  userStore.setCurrentFriend(Number(friendId));
+const handleFriendSelect = (userId) => {
+  userStore.setCurrentFriend(Number(userId));
 };
 
 const goToChat = () => {
@@ -90,21 +90,25 @@ const handleSelect = (index) => {
   }
 };
 
+onMounted(async () => {
+  await userStore.fetchUserProfile();
+  await userStore.fetchUsersList();
+});
 // 模拟用户数据加载
-onMounted(() => {
+/*onMounted(() => {
   // 这里可以替换为从后端 API 获取用户数据
   const simulatedUser = {
     avatar: 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png',
     email: 'user@example.com'
   };
-  const simulatedFriends = [
+  const simulatedUsers = [
     { id: 1, avatar: 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png', name: '用户1' },
     { id: 2, avatar: 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png', name: '用户2' }
   ];
 
   userStore.updateUserProfile(simulatedUser);
-  userStore.updateFriendsList(simulatedFriends);
-});
+  userStore.updateFriendsList(simulatedUsers);
+});*/
 </script>
 
 <style scoped>
