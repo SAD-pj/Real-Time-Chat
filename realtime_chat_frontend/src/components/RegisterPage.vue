@@ -105,10 +105,18 @@ export default {
 
       if (isValid) {
         try {
-          const response = await axios.post('/api/register', {
+          const data = {
             email: email.value,
             password: password.value
-          });
+          };
+
+          const config = {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          };
+
+          const response = await axios.post('/api/register', data, config);
 
           if (response.data.success) {
             // 注册成功，跳转到登录页面

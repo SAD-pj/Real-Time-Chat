@@ -77,10 +77,18 @@ export default {
 
       if (isValid) {
         try {
-          const response = await axios.post('/api/login', {
+          const data = {
             email: email.value,
             password: password.value
-          });
+          };
+
+          const config = {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          };
+
+          const response = await axios.post('/api/login', data, config);
 
           if (response.data.success) {
             router.push('/chat');
