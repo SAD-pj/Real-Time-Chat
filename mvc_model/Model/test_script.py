@@ -1,7 +1,7 @@
 # do not run this script
 
 import sqlite3
-conn = sqlite3.connect('realtime_chat_backend/db/user.db')
+conn = sqlite3.connect('realtime_chat_backend/models/user.models')
 cursor = conn.cursor()
 
 #cursor.execute("INSERT INTO user (name, nick_name, password, mobile, online_status, avatar, email, session_history, chat_id, user_timestamp, emoji) VALUES"+ 

@@ -2,7 +2,9 @@
   <div class="login-page">
     <div class="login-container">
       <h1 class="bounce">登录</h1>
+
       <form @submit.prevent="handleLogin">
+
         <div class="input-group">
           <div class="input-with-icon">
             <el-icon class="icon"><User /></el-icon>
@@ -10,6 +12,7 @@
           </div>
           <p v-if="emailError" class="error-message">{{ emailError }}</p>
         </div>
+
         <div class="input-group">
           <div class="input-with-icon">
             <el-icon class="icon"><Lock /></el-icon>
@@ -17,11 +20,14 @@
           </div>
           <p v-if="passwordError" class="error-message">{{ passwordError }}</p>
         </div>
+
         <div class="buttons">
           <router-link to="/register" class="register-button">立即注册</router-link>
           <button type="submit" class="login-button">登录</button>
         </div>
+
       </form>
+
     </div>
   </div>
 </template>
@@ -88,12 +94,14 @@ export default {
             }
           };
 
-          const response = await axios.post('/api/login', data, config);
+          // const response = await axios.post('/api/login', data, config); // 这里发送请求到服务端api
+          const response = await axios.post('http://localhost:3000/loginPage/loginPage/login', data, config);
 
           if (response.data.success) {
             router.push('/chat');
           } else {
             alert(response.data.message || '登录失败，请检查您的邮箱和密码');
+
           }
         } catch (error) {
           console.error('登录请求失败:', error);

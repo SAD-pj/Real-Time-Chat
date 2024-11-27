@@ -2,6 +2,7 @@
   <div class="register-page">
     <div class="register-container">
       <h1 class="bounce">注册</h1>
+
       <form @submit.prevent="handleSubmit">
         <div class="input-group">
           <div class="input-with-icon">
@@ -29,6 +30,7 @@
           <button type="submit" class="login-button">注册</button>
         </div>
       </form>
+
     </div>
   </div>
 </template>
