@@ -136,7 +136,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url('../image/backgroundimage.png'); /* 设置背景图片路径 */
+  background-image: url('../../public/image/backgroundimage.png'); /* 设置背景图片路径 */
   background-size: cover; /* 背景图片覆盖整个元素 */
   background-position: center; /* 背景图片居中 */
   background-repeat: no-repeat; /* 不重复背景图片 */

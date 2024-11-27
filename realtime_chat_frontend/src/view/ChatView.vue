@@ -90,12 +90,12 @@ const handleSelect = (index) => {
   }
 };
 
-onMounted(async () => {
-  await userStore.fetchUserProfile();
-  await userStore.fetchUsersList();
-});
+// onMounted(async () => {
+//   await userStore.fetchUserProfile();
+//   await userStore.fetchUsersList();
+// });
 // 模拟用户数据加载
-/*onMounted(() => {
+onMounted(() => {
   // 这里可以替换为从后端 API 获取用户数据
   const simulatedUser = {
     avatar: 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png',
@@ -108,7 +108,7 @@ onMounted(async () => {
 
   userStore.updateUserProfile(simulatedUser);
   userStore.updateFriendsList(simulatedUsers);
-});*/
+});
 </script>
 
 <style scoped>
