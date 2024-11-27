@@ -12,6 +12,13 @@
         </div>
         <div class="input-group">
           <div class="input-with-icon">
+            <el-icon class="icon"><Avatar /></el-icon>
+            <input type="text" placeholder="请输入昵称" v-model="nickname" :class="{ error: nicknameError }" @input="clearError('nickname')" required />
+          </div>
+          <p v-if="nicknameError" class="error-message">{{ nicknameError }}</p>
+        </div>
+        <div class="input-group">
+          <div class="input-with-icon">
             <el-icon class="icon"><Lock /></el-icon>
             <input type="password" placeholder="请输入密码" v-model="password" :class="{ error: passwordError }" @input="clearError('password')" required />
           </div>
@@ -35,25 +42,28 @@
 
 <script>
 import { ref } from 'vue';
-import { useRouter } from 'vue-router'; // 导入 Vue Router
-import { ElIcon, User, Lock, Unlock } from 'element-plus';
-import axios from 'axios'; // 导入 Axios
+import { useRouter } from 'vue-router';
+import { ElIcon, User, Lock, Unlock, Avatar } from 'element-plus';
+import axios from 'axios';
 
 export default {
   components: {
     ElIcon,
     User,
     Lock,
-    Unlock
+    Unlock,
+    Avatar
   },
   setup() {
-    const router = useRouter(); // 获取路由器实例
+    const router = useRouter();
     const email = ref('');
     const password = ref('');
     const confirmPassword = ref('');
+    const nickname = ref(''); // 新增昵称字段
     const emailError = ref('');
     const passwordError = ref('');
     const confirmPasswordError = ref('');
+    const nicknameError = ref(''); // 新增昵称错误提示
     const passwordMismatch = ref(false);
 
     const validateEmail = (email) => {
@@ -84,11 +94,29 @@ export default {
       return true;
     };
 
+    const validateNickname = (nickname) => { // 新增昵称验证
+      if (nickname === '') {
+        nicknameError.value = '昵称不能为空';
+        return false;
+      }
+      nicknameError.value = '';
+      return true;
+    };
+
     const clearError = (field) => {
       if (field === 'email') emailError.value = '';
       if (field === 'password') passwordError.value = '';
       if (field === 'confirmPassword') confirmPasswordError.value = '';
+      if (field === 'nickname') nicknameError.value = ''; // 新增清除昵称错误
       passwordMismatch.value = false;
+    };
+
+    const getRandomAvatar = () => {
+      const avatarFolder = '/avater/'; // 公共文件夹路径
+      const avatars = ['avatar1.png', 'avatar2.png', 'avatar3.png', 'avatar4.png', 'avatar5.png', 'avatar6.png'];
+      const totalAvatars = avatars.length;
+      const randomIndex = Math.floor(Math.random() * totalAvatars);
+      return avatarFolder + avatars[randomIndex];
     };
 
     const handleSubmit = async () => {
@@ -97,6 +125,7 @@ export default {
       if (!validateEmail(email.value)) isValid = false;
       if (!validatePassword(password.value)) isValid = false;
       if (!validateConfirmPassword(confirmPassword.value)) isValid = false;
+      if (!validateNickname(nickname.value)) isValid = false; // 验证昵称
 
       if (password.value !== confirmPassword.value) {
         passwordMismatch.value = true;
@@ -107,7 +136,9 @@ export default {
         try {
           const data = {
             email: email.value,
-            password: password.value
+            password: password.value,
+            nickname: nickname.value, // 添加昵称到发送的数据中
+            avatar: getRandomAvatar() // 随机分配头像
           };
 
           const config = {
@@ -119,15 +150,12 @@ export default {
           const response = await axios.post('/api/register', data, config);
 
           if (response.data.success) {
-            // 注册成功，跳转到登录页面
             alert('注册成功，请登录');
             router.push('/login');
           } else {
-            // 注册失败，显示错误信息
             alert(response.data.message || '注册失败，请检查您的信息');
           }
         } catch (error) {
-          // 处理请求错误
           console.error('注册请求失败:', error);
           alert('网络请求出错，请稍后再试');
         }
@@ -138,9 +166,11 @@ export default {
       email,
       password,
       confirmPassword,
+      nickname, // 返回新增的昵称字段
       emailError,
       passwordError,
       confirmPasswordError,
+      nicknameError, // 返回新增的昵称错误提示
       passwordMismatch,
       handleSubmit,
       clearError
@@ -163,7 +193,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url('../image/backgroundimage.png'); /* 设置背景图片路径 */
+  background-image: url('../../public/image/backgroundimage.png'); /* 设置背景图片路径 */
   background-size: cover; /* 背景图片覆盖整个元素 */
   background-position: center; /* 背景图片居中 */
   background-repeat: no-repeat; /* 不重复背景图片 */
@@ -188,7 +218,7 @@ export default {
 }
 
 .bounce {
-  margin: 40px;
+  margin: 25px;
   text-align: center;
   color: white;
   //animation: bounce 1s infinite;
